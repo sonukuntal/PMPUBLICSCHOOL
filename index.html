@@ -1,0 +1,479 @@
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@400;600;700&family=Mukta:wght@400;500;600;700&family=Caveat:wght@500;600&display=swap');
+
+.site {
+  --paper: #efead9;
+  --paper-white: #fbf9f0;
+  --ink: #1e3550;
+  --ink-soft: #2c3e50;
+  --margin-red: #a83e32;
+  --brass: #a9782e;
+  --chalk: #1f3d2e;
+  --chalk-text: #f2efe3;
+  --line-blue: #8ba0bd;
+
+  font-family: 'Mukta', sans-serif;
+  color: var(--ink-soft);
+  background: var(--paper);
+  background-image:
+    linear-gradient(var(--line-blue) 1px, transparent 1px);
+  background-size: 100% 34px;
+  background-position: 0 120px;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+.site * { box-sizing: border-box; }
+.site a { color: inherit; text-decoration: none; }
+.site h1, .site h2, .site h3 {
+  font-family: 'Zilla Slab', serif;
+  color: var(--ink);
+  margin: 0;
+}
+.site .eyebrow {
+  font-family: 'Caveat', cursive;
+  font-size: 1.3rem;
+  color: var(--margin-red);
+  display: inline-block;
+}
+.site button, .site .btn {
+  cursor: pointer;
+  font-family: 'Mukta', sans-serif;
+  font-weight: 600;
+}
+.site :focus-visible {
+  outline: 3px solid var(--brass);
+  outline-offset: 3px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .site * { animation: none !important; transition: none !important; }
+}
+
+/* margin rule running down the whole page */
+.site {
+  position: relative;
+  padding-left: clamp(28px, 6vw, 64px);
+  border-left: none;
+}
+.site::before {
+  content: "";
+  position: absolute;
+  top: 0; bottom: 0;
+  left: clamp(18px, 4.5vw, 48px);
+  width: 2px;
+  background: var(--margin-red);
+  opacity: 0.55;
+  z-index: 1;
+}
+.site .wrap {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 clamp(16px, 3vw, 40px);
+}
+
+/* ---------- NAV / TABS ---------- */
+.topbar {
+  position: sticky; top: 0; z-index: 20;
+  background: var(--paper);
+  border-bottom: 1px solid rgba(30,53,80,0.15);
+}
+.topbar .wrap {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 12px; padding-top: 12px; padding-bottom: 0;
+}
+.topbar .brandmark {
+  display: flex; align-items: center; gap: 10px;
+  font-family: 'Zilla Slab', serif; font-weight: 700; color: var(--ink);
+  font-size: 1.05rem; white-space: nowrap;
+}
+.topbar .brandmark .mini-seal {
+  width: 30px; height: 30px; border-radius: 50%;
+  border: 2px solid var(--brass); color: var(--brass);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.65rem; font-weight: 700;
+}
+.tabs {
+  display: flex; gap: 4px; overflow-x: auto; scrollbar-width: none;
+  padding-bottom: 0;
+}
+.tabs::-webkit-scrollbar { display: none; }
+.tabs a {
+  font-size: 0.88rem; font-weight: 600; color: var(--ink-soft);
+  padding: 10px 14px 8px; border: 1px solid rgba(30,53,80,0.18);
+  border-bottom: none; border-radius: 8px 8px 0 0;
+  background: var(--paper-white);
+  white-space: nowrap;
+  transform: translateY(2px);
+  transition: transform 0.15s ease, color 0.15s ease;
+}
+.tabs a:hover, .tabs a:focus-visible { transform: translateY(0); color: var(--margin-red); }
+
+/* ---------- HERO ---------- */
+.hero { padding: 56px 0 40px; position: relative; }
+.hero .meta-line {
+  font-size: 0.82rem; letter-spacing: 0.02em; color: var(--ink-soft);
+  border-top: 1px dashed rgba(30,53,80,0.35);
+  border-bottom: 1px dashed rgba(30,53,80,0.35);
+  padding: 8px 0; margin: 18px 0 26px; max-width: 560px;
+}
+.hero-grid {
+  display: grid; grid-template-columns: auto 1fr; gap: 28px; align-items: start;
+}
+.seal {
+  width: 128px; height: 128px; border-radius: 50%;
+  border: 3px solid var(--brass);
+  display: flex; align-items: center; justify-content: center;
+  position: relative; flex-shrink: 0;
+  color: var(--brass);
+  transform: rotate(-8deg);
+  animation: sealIn 0.7s ease both;
+}
+.seal::before {
+  content: "";
+  position: absolute; inset: 8px;
+  border: 1px solid var(--brass);
+  border-radius: 50%;
+}
+.seal-text {
+  font-family: 'Zilla Slab', serif; font-weight: 700;
+  font-size: 2rem; color: var(--brass);
+}
+.seal-orbit {
+  position: absolute; inset: 0;
+}
+.seal-orbit svg { width: 100%; height: 100%; }
+@keyframes sealIn {
+  from { opacity: 0; transform: rotate(-8deg) scale(0.7); }
+  to { opacity: 1; transform: rotate(-8deg) scale(1); }
+}
+.hero h1 {
+  font-size: clamp(2.1rem, 5vw, 3.4rem);
+  line-height: 1.05;
+  animation: riseIn 0.6s ease 0.15s both;
+}
+.hero .sub {
+  font-size: clamp(1.05rem, 2vw, 1.25rem);
+  color: var(--margin-red);
+  font-family: 'Caveat', cursive;
+  margin-top: 6px;
+  animation: riseIn 0.6s ease 0.3s both;
+}
+@keyframes riseIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.cta-row { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 6px; }
+.btn-primary {
+  background: var(--margin-red); color: var(--paper-white);
+  border: none; padding: 13px 22px; border-radius: 4px;
+  font-size: 0.95rem; box-shadow: 3px 3px 0 rgba(30,53,80,0.25);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.btn-primary:hover { transform: translate(-2px,-2px); box-shadow: 5px 5px 0 rgba(30,53,80,0.3); }
+.btn-secondary {
+  border: 1.5px solid var(--ink); color: var(--ink);
+  padding: 12px 20px; border-radius: 4px; background: transparent;
+  font-size: 0.95rem;
+}
+.btn-secondary:hover { background: var(--ink); color: var(--paper-white); }
+
+/* ---------- SECTION SHELL ---------- */
+.section { padding: 54px 0; }
+.section-head { margin-bottom: 28px; max-width: 640px; }
+.section-head h2 { font-size: clamp(1.5rem, 3vw, 2.1rem); }
+.section-head .eyebrow { display: block; margin-bottom: 4px; }
+
+/* ---------- ABOUT ---------- */
+.about-grid {
+  display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 36px;
+}
+.principal-card {
+  background: var(--paper-white); border: 1px solid rgba(30,53,80,0.15);
+  border-left: 4px solid var(--margin-red);
+  padding: 26px 24px; border-radius: 2px;
+  box-shadow: 4px 4px 0 rgba(30,53,80,0.08);
+}
+.principal-card p { font-size: 1.02rem; }
+.signature { font-family: 'Caveat', cursive; font-size: 1.5rem; color: var(--ink); margin-top: 14px; }
+.mission-list { list-style: none; margin: 0; padding: 0; }
+.mission-list li {
+  position: relative; padding: 10px 0 10px 26px;
+  border-bottom: 1px dashed rgba(30,53,80,0.25);
+  font-size: 0.98rem;
+}
+.mission-list li::before {
+  content: "✓"; position: absolute; left: 0; top: 9px;
+  color: var(--margin-red); font-weight: 700;
+}
+
+/* ---------- WHY / TIMETABLE ---------- */
+.period-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+}
+.period-card {
+  background: var(--paper-white); border: 1px solid rgba(30,53,80,0.15);
+  border-radius: 6px; padding: 20px 18px;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+.period-card:hover { transform: translateY(-4px); box-shadow: 0 8px 18px rgba(30,53,80,0.12); }
+.period-label {
+  font-family: 'Zilla Slab', serif; font-weight: 700; font-size: 0.78rem;
+  color: var(--brass); text-transform: uppercase; letter-spacing: 0.06em;
+}
+.period-card h3 { font-size: 1.08rem; margin-top: 6px; margin-bottom: 6px; }
+.period-card p { font-size: 0.9rem; margin: 0; color: var(--ink-soft); }
+
+/* ---------- ACADEMICS / REGISTER TABLE ---------- */
+.register {
+  width: 100%; border-collapse: collapse; background: var(--paper-white);
+  border: 1px solid rgba(30,53,80,0.2); font-size: 0.92rem;
+}
+.register th {
+  text-align: left; font-family: 'Zilla Slab', serif; font-weight: 700;
+  background: var(--ink); color: var(--chalk-text);
+  padding: 12px 14px; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.04em;
+}
+.register td {
+  padding: 14px; border-bottom: 1px solid rgba(30,53,80,0.12);
+  vertical-align: top;
+}
+.register tr:last-child td { border-bottom: none; }
+.register td:first-child { font-family: 'Zilla Slab', serif; font-weight: 600; color: var(--ink); white-space: nowrap; }
+
+/* ---------- GALLERY ---------- */
+.gallery-section { background: var(--chalk); color: var(--chalk-text); margin: 0 -1px; }
+.gallery-section .section-head h2 { color: var(--chalk-text); }
+.gallery-section .eyebrow { color: #e6b98a; }
+.gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+.gallery-card {
+  background: rgba(251,249,240,0.06);
+  border: 1px dashed rgba(251,249,240,0.35);
+  border-radius: 4px; padding: 22px 14px; text-align: center;
+  transition: background 0.2s ease;
+}
+.gallery-card:hover { background: rgba(251,249,240,0.12); }
+.gallery-card svg { width: 40px; height: 40px; margin-bottom: 10px; }
+.gallery-card span { font-size: 0.88rem; }
+.photo-grid { grid-template-columns: repeat(4, 1fr); }
+.gallery-photo {
+  margin: 0; background: rgba(251,249,240,0.06);
+  border: 1px solid rgba(251,249,240,0.25); border-radius: 4px;
+  overflow: hidden; transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+.gallery-photo:hover { transform: translateY(-4px); box-shadow: 0 10px 20px rgba(0,0,0,0.35); }
+.gallery-photo img { width: 100%; height: 190px; object-fit: cover; display: block; }
+.gallery-photo figcaption {
+  font-size: 0.78rem; padding: 8px 10px; color: var(--chalk-text);
+  border-top: 1px dashed rgba(251,249,240,0.3);
+}
+.gallery-note {
+  margin-top: 20px; font-family: 'Caveat', cursive; font-size: 1.15rem; color: #e6b98a;
+}
+
+/* ---------- ADMISSIONS ---------- */
+.admissions-wrap { display: grid; grid-template-columns: 1fr auto; gap: 32px; align-items: center; }
+.steps { list-style: none; margin: 0; padding: 0; counter-reset: step; }
+.steps li {
+  counter-increment: step; position: relative; padding: 12px 0 12px 44px;
+  border-bottom: 1px dashed rgba(30,53,80,0.2); font-size: 0.96rem;
+}
+.steps li::before {
+  content: counter(step); position: absolute; left: 0; top: 10px;
+  width: 26px; height: 26px; border-radius: 50%;
+  border: 1.5px solid var(--margin-red); color: var(--margin-red);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Zilla Slab', serif; font-weight: 700; font-size: 0.82rem;
+}
+.big-stamp {
+  border: 3px solid var(--margin-red); color: var(--margin-red);
+  border-radius: 10px; padding: 18px 22px; text-align: center;
+  transform: rotate(4deg); width: 190px;
+}
+.big-stamp .l1 { font-family: 'Zilla Slab', serif; font-weight: 700; font-size: 1.1rem; line-height: 1.15; }
+.big-stamp .l2 { font-size: 0.78rem; margin-top: 6px; letter-spacing: 0.05em; }
+
+/* ---------- CONTACT / FOOTER ---------- */
+.contact-section { background: var(--ink); color: var(--chalk-text); }
+.contact-section .eyebrow { color: #e6b98a; }
+.contact-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; }
+.contact-field { border-top: 1px solid rgba(251,249,240,0.25); padding-top: 12px; }
+.contact-field .k { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; color: #cdd8e4; }
+.contact-field .v { font-size: 0.98rem; margin-top: 4px; }
+.contact-field .v em { color: #e6b98a; font-style: normal; }
+.footer-bottom {
+  margin-top: 34px; padding-top: 18px; border-top: 1px solid rgba(251,249,240,0.2);
+  font-size: 0.8rem; color: #cdd8e4; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px;
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 800px) {
+  .about-grid, .admissions-wrap, .contact-grid { grid-template-columns: 1fr; }
+  .period-grid { grid-template-columns: repeat(2, 1fr); }
+  .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+  .gallery-photo img { height: 160px; }
+  .hero-grid { grid-template-columns: 1fr; }
+  .seal { width: 96px; height: 96px; }
+  .big-stamp { transform: rotate(0deg); width: 100%; }
+}
+@media (max-width: 480px) {
+  .period-grid { grid-template-columns: 1fr; }
+}
+</style>
+
+<div class="site">
+  <header class="topbar">
+    <div class="wrap">
+      <div class="brandmark"><span class="mini-seal">PM</span> PM Public School Jattari, Aligarh</div>
+      <nav class="tabs">
+        <a href="#about">About</a>
+        <a href="#why">Why Us</a>
+        <a href="#academics">Academics</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#admissions">Admissions</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="seal" aria-hidden="true">
+        <span class="seal-text">PM</span>
+      </div>
+      <div>
+        <span class="eyebrow">Nursery to Class VIII</span>
+        <h1>PM Public School, Jattari</h1>
+        <div class="sub">Where every exercise book is the beginning of a bigger story.</div>
+        <div class="meta-line">Village: Jattari &nbsp;·&nbsp; Medium: English &nbsp;·&nbsp; Classes: Nursery – VIII &nbsp;·&nbsp; <em>Add board affiliation here</em></div>
+        <div class="cta-row">
+          <a class="btn-primary" href="#admissions">Admissions Open — Session 2026–27</a>
+          <a class="btn-secondary" href="#contact">Visit Our Campus</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="about">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">A note from the office</span>
+        <h2>About PM Public School</h2>
+      </div>
+      <div class="about-grid">
+        <div class="principal-card">
+          <p>"At PM Public School, we believe every child who walks through our gate deserves patient teachers, a safe classroom, and the confidence that comes from being known by name. Our promise to every parent in Jattari is simple: we will care for your child's learning as if it were our own."</p>
+          <div class="signature">— Principal, PM Public School</div>
+        </div>
+        <div>
+          <h3 style="font-size:1.1rem; margin-bottom:12px;">Our Mission</h3>
+          <ul class="mission-list">
+            <li>A strong foundation in reading, writing and numeracy from Nursery onward</li>
+            <li>Small classrooms with individual attention for every child</li>
+            <li>Discipline and values taught alongside academics</li>
+            <li>Confident preparation for Class IX and the years beyond</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="why">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Today's timetable</span>
+        <h2>Why Parents Choose Us</h2>
+      </div>
+      <div class="period-grid">
+        <div class="period-card"><div class="period-label">Period 1</div><h3>Small Class Sizes</h3><p>Fewer children per classroom means every child is seen and heard.</p></div>
+        <div class="period-card"><div class="period-label">Period 2</div><h3>Caring, Experienced Teachers</h3><p>Teachers who know each child's strengths and where they need support.</p></div>
+        <div class="period-card"><div class="period-label">Period 3</div><h3>Safe, Well-Kept Campus</h3><p>A secure, clean campus where parents feel at ease dropping their child off.</p></div>
+        <div class="period-card"><div class="period-label">Period 4</div><h3>Focus on English Communication</h3><p>Daily practice in speaking and writing so children grow confident with the language.</p></div>
+        <div class="period-card"><div class="period-label">Period 5</div><h3>Sports &amp; Co-curricular Activities</h3><p>Games, art and activities that build teamwork alongside textbooks.</p></div>
+        <div class="period-card"><div class="period-label">Period 6</div><h3>Regular Parent Updates</h3><p>Clear communication about your child's progress, term after term.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="academics">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">The class register</span>
+        <h2>Academics by Class</h2>
+      </div>
+      <table class="register">
+        <thead>
+          <tr><th>Classes</th><th>Stage</th><th>What Children Learn</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Nursery – UKG</td><td>Foundation</td><td>Play-based learning, rhymes, stories and early motor &amp; language skills</td></tr>
+          <tr><td>I – III</td><td>Primary</td><td>Reading, writing, basic Mathematics and Environmental Studies</td></tr>
+          <tr><td>IV – V</td><td>Upper Primary</td><td>Mathematics, Science, Social Studies and English grammar</td></tr>
+          <tr><td>VI – VIII</td><td>Middle</td><td>Full subject curriculum with steady preparation for Class IX</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="section gallery-section" id="gallery">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">A peek inside</span>
+        <h2>Campus Gallery</h2>
+      </div>
+      <div class="gallery-grid photo-grid">
+        <figure class="gallery-photo"><img src="images/independence-day-01.jpeg" alt="Students at PM Public School Jattari during Independence Day celebration" loading="lazy"><figcaption>Independence Day Celebration</figcaption></figure>
+        <figure class="gallery-photo"><img src="images/independence-day-02.jpeg" alt="Students seated together during Independence Day assembly" loading="lazy"><figcaption>Independence Day Assembly</figcaption></figure>
+        <figure class="gallery-photo"><img src="images/annual-day-01.jpeg" alt="Student giving a speech on stage at PM Public School Jattari" loading="lazy"><figcaption>Annual Day — Student Speech</figcaption></figure>
+        <figure class="gallery-photo"><img src="images/annual-day-02.jpeg" alt="Student speaking on stage during Annual Day" loading="lazy"><figcaption>Annual Day — Student Speech</figcaption></figure>
+        <figure class="gallery-photo"><img src="images/annual-day-03.jpeg" alt="Two students on stage during Annual Day" loading="lazy"><figcaption>Annual Day Performance</figcaption></figure>
+        <figure class="gallery-photo"><img src="images/annual-day-04.jpeg" alt="Student in school uniform speaking on stage" loading="lazy"><figcaption>Annual Day — Student Speech</figcaption></figure>
+        <figure class="gallery-photo"><img src="images/annual-day-05.jpeg" alt="Student in school uniform on stage" loading="lazy"><figcaption>Annual Day — Student Speech</figcaption></figure>
+        <figure class="gallery-photo"><img src="images/annual-day-06.jpeg" alt="Student speaking on stage with a teacher" loading="lazy"><figcaption>Annual Day Performance</figcaption></figure>
+      </div>
+      <div class="gallery-note">More moments from our Annual Day and Independence Day celebrations.</div>
+    </div>
+  </section>
+
+  <section class="section" id="admissions">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">How to join us</span>
+        <h2>Admissions Process</h2>
+      </div>
+      <div class="admissions-wrap">
+        <ol class="steps">
+          <li>Enquire — call or visit the school office</li>
+          <li>Campus visit — see the classrooms and meet the teachers</li>
+          <li>Submit the admission form with required documents</li>
+          <li>A short, friendly interaction with your child</li>
+          <li>Fee submission and seat confirmation</li>
+        </ol>
+        <div class="big-stamp">
+          <div class="l1">ADMISSIONS<br>OPEN</div>
+          <div class="l2">SESSION 2026–27</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="section contact-section" id="contact">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Get in touch</span>
+        <h2 style="color:#fbf9f0;">Visit or Contact Us</h2>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-field"><div class="k">Address</div><div class="v">P.M. Public School, Jattari, District Aligarh, Uttar Pradesh-202137 <em>Infront of Patel Inter College</em></div></div>
+        <div class="contact-field"><div class="k">Phone</div><div class="v"><em>+91 8285503740</em></div></div>
+        <div class="contact-field"><div class="k">Email</div><div class="v"><em>info@pmpublicschooljattari.in</em></div></div>
+        <div class="contact-field"><div class="k">Office Hours</div><div class="v">Monday – Saturday, 7:00 AM – 3:00 PM</div></div>
+        <div class="contact-field"><div class="k">Admissions</div><div class="v">Open for Session 2026–27</div></div>
+        <div class="contact-field"><div class="k">Find Us</div><div class="v"><em>Add your Google Maps link</em></div></div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 PM Public School, Jattari</span>
+        <span>Nursery – Class VIII</span>
+      </div>
+    </div>
+  </footer>
+</div>
