@@ -25,6 +25,16 @@
 
 .site * { box-sizing: border-box; }
 .site a { color: inherit; text-decoration: none; }
+.site .whatsapp-float {
+  position: fixed; right: 22px; bottom: 22px; z-index: 50;
+  width: 58px; height: 58px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: #fff; background: #25d366;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.28);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.site .whatsapp-float:hover { transform: translateY(-3px); box-shadow: 0 7px 18px rgba(0,0,0,0.3); }
+.site .whatsapp-float svg { width: 32px; height: 32px; fill: currentColor; }
 .site h1, .site h2, .site h3 {
   font-family: 'Zilla Slab', serif;
   color: var(--ink);
@@ -92,6 +102,7 @@
   display: flex; align-items: center; justify-content: center;
   font-size: 0.65rem; font-weight: 700;
 }
+.topbar .brandmark .school-logo { width: 42px; height: 42px; object-fit: contain; border-radius: 50%; flex: 0 0 auto; }
 .tabs {
   display: flex; gap: 4px; overflow-x: auto; scrollbar-width: none;
   padding-bottom: 0;
@@ -138,6 +149,7 @@
   font-family: 'Zilla Slab', serif; font-weight: 700;
   font-size: 2rem; color: var(--brass);
 }
+.seal .seal-logo { width: 100%; height: 100%; object-fit: contain; border-radius: 50%; }
 .seal-orbit {
   position: absolute; inset: 0;
 }
@@ -151,6 +163,7 @@
   line-height: 1.05;
   animation: riseIn 0.6s ease 0.15s both;
 }
+.hero .school-logo { width: 0.95em; height: 0.95em; object-fit: contain; vertical-align: -0.12em; margin-right: 0.12em; }
 .hero .sub {
   font-size: clamp(1.05rem, 2vw, 1.25rem);
   color: var(--margin-red);
@@ -195,6 +208,12 @@
 }
 .principal-card p { font-size: 1.02rem; }
 .signature { font-family: 'Caveat', cursive; font-size: 1.5rem; color: var(--ink); margin-top: 14px; }
+.top-banner { display: block; width: min(100% - 32px, 1080px); height: auto; margin: 20px auto 0; border: 1px solid rgba(30,53,80,0.15); }
+.leadership-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; margin-top: 34px; }
+.leader-card { background: var(--paper-white); border: 1px solid rgba(30,53,80,0.15); padding: 18px; text-align: center; }
+.leader-card img { width: 100%; height: 280px; object-fit: contain; display: block; }
+.leader-card h3 { margin-top: 12px; }
+.leader-card p { margin: 8px auto 0; max-width: 34ch; font-style: italic; }
 .mission-list { list-style: none; margin: 0; padding: 0; }
 .mission-list li {
   position: relative; padding: 10px 0 10px 26px;
@@ -308,6 +327,7 @@
 /* ---------- RESPONSIVE ---------- */
 @media (max-width: 800px) {
   .about-grid, .admissions-wrap, .contact-grid { grid-template-columns: 1fr; }
+  .leadership-grid { grid-template-columns: 1fr; }
   .period-grid { grid-template-columns: repeat(2, 1fr); }
   .gallery-grid { grid-template-columns: repeat(2, 1fr); }
   .gallery-photo img { height: 160px; }
@@ -323,31 +343,35 @@
 <div class="site">
   <header class="topbar">
     <div class="wrap">
-      <div class="brandmark"><span class="mini-seal">PM</span> PM Public School Jattari, Aligarh</div>
+      <div class="brandmark"><img class="school-logo" src="images/Logo.jpeg" alt=""> P.M. Public School Jattari, Aligarh</div>
       <nav class="tabs">
         <a href="#about">About</a>
         <a href="#why">Why Us</a>
         <a href="#academics">Academics</a>
         <a href="#gallery">Gallery</a>
         <a href="#admissions">Admissions</a>
+        <a href="#careers">Careers</a>
         <a href="#contact">Contact</a>
       </nav>
     </div>
   </header>
 
+  <img class="top-banner" src="images/Backgroundontop.jpeg" alt="P.M. Public School Jattari memorial tribute to its founder, with the message Committed to Quality Education for a brighter future">
+
   <section class="hero">
     <div class="wrap hero-grid">
       <div class="seal" aria-hidden="true">
-        <span class="seal-text">PM</span>
+        <img class="seal-logo" src="images/Logo.jpeg" alt="">
       </div>
       <div>
         <span class="eyebrow">Nursery to Class VIII</span>
-        <h1>PM Public School, Jattari</h1>
+        <h1>P.M. Public School, Jattari</h1>
         <div class="sub">Where every exercise book is the beginning of a bigger story.</div>
-        <div class="meta-line">Village: Jattari &nbsp;·&nbsp; Medium: English &nbsp;·&nbsp; Classes: Nursery – VIII &nbsp;·&nbsp; <em>Add board affiliation here</em></div>
+        <div class="meta-line">Village: Jattari &nbsp;·&nbsp; Medium: English &nbsp;·&nbsp; Classes: Nursery – VIII &nbsp;·&nbsp; Affiliated to U.P. Board &nbsp;·&nbsp; Registration No. 13378</div>
         <div class="cta-row">
           <a class="btn-primary" href="#admissions">Admissions Open — Session 2026–27</a>
           <a class="btn-secondary" href="#contact">Visit Our Campus</a>
+          <a class="btn-secondary" href="https://wa.me/918285503740?text=Hello%2C%20I%20would%20like%20to%20enquire%20about%20P.M.%20Public%20School." target="_blank" rel="noopener noreferrer">WhatsApp Enquiry</a>
         </div>
       </div>
     </div>
@@ -357,12 +381,12 @@
     <div class="wrap">
       <div class="section-head">
         <span class="eyebrow">A note from the office</span>
-        <h2>About PM Public School</h2>
+        <h2>About P.M. Public School</h2>
       </div>
       <div class="about-grid">
         <div class="principal-card">
-          <p>"At PM Public School, we believe every child who walks through our gate deserves patient teachers, a safe classroom, and the confidence that comes from being known by name. Our promise to every parent in Jattari is simple: we will care for your child's learning as if it were our own."</p>
-          <div class="signature">— Principal, PM Public School</div>
+          <p>"At P.M. Public School, we believe every child who walks through our gate deserves patient teachers, a safe classroom, and the confidence that comes from being known by name. Our promise to every parent in Jattari is simple: we will care for your child's learning as if it were our own."</p>
+          <div class="signature">— Principal, P.M. Public School</div>
         </div>
         <div>
           <h3 style="font-size:1.1rem; margin-bottom:12px;">Our Mission</h3>
@@ -373,6 +397,18 @@
             <li>Confident preparation for Class IX and the years beyond</li>
           </ul>
         </div>
+      </div>
+      <div class="leadership-grid" aria-label="School leadership">
+        <article class="leader-card">
+          <img src="images/Chairman.jpeg" alt="Chairman of P.M. Public School">
+          <h3>Chairman</h3>
+          <p>Let us build bright futures together.<br>Every child deserves the chance to shine.</p>
+        </article>
+        <article class="leader-card">
+          <img src="images/Founder.jpeg" alt="Portrait of the founder of P.M. Public School">
+          <h3>Founder</h3>
+          <p>Committed to quality education<br>for a brighter future.</p>
+        </article>
       </div>
     </div>
   </section>
@@ -421,9 +457,9 @@
         <h2>Campus Gallery</h2>
       </div>
       <div class="gallery-grid photo-grid">
-        <figure class="gallery-photo"><img src="images/independence-day-01.jpeg" alt="Students at PM Public School Jattari during Independence Day celebration" loading="lazy"><figcaption>Independence Day Celebration</figcaption></figure>
+        <figure class="gallery-photo"><img src="images/independence-day-01.jpeg" alt="Students at P.M. Public School Jattari during Independence Day celebration" loading="lazy"><figcaption>Independence Day Celebration</figcaption></figure>
         <figure class="gallery-photo"><img src="images/independence-day-02.jpeg" alt="Students seated together during Independence Day assembly" loading="lazy"><figcaption>Independence Day Assembly</figcaption></figure>
-        <figure class="gallery-photo"><img src="images/annual-day-01.jpeg" alt="Student giving a speech on stage at PM Public School Jattari" loading="lazy"><figcaption>Annual Day — Student Speech</figcaption></figure>
+        <figure class="gallery-photo"><img src="images/annual-day-01.jpeg" alt="Student giving a speech on stage at P.M. Public School Jattari" loading="lazy"><figcaption>Annual Day — Student Speech</figcaption></figure>
         <figure class="gallery-photo"><img src="images/annual-day-02.jpeg" alt="Student speaking on stage during Annual Day" loading="lazy"><figcaption>Annual Day — Student Speech</figcaption></figure>
         <figure class="gallery-photo"><img src="images/annual-day-03.jpeg" alt="Two students on stage during Annual Day" loading="lazy"><figcaption>Annual Day Performance</figcaption></figure>
         <figure class="gallery-photo"><img src="images/annual-day-04.jpeg" alt="Student in school uniform speaking on stage" loading="lazy"><figcaption>Annual Day — Student Speech</figcaption></figure>
@@ -456,6 +492,17 @@
     </div>
   </section>
 
+  <section class="section" id="careers">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Join our team</span>
+        <h2>Become a Teacher at P.M. Public School</h2>
+      </div>
+      <p>Interested in teaching with us? Get in touch with the school to enquire about career opportunities.</p>
+      <div class="cta-row"><a class="btn-primary" href="mailto:info@pmpublicschooljattari.in?subject=Career%20Enquiry%20-%20Teacher">Enquire about teaching opportunities</a></div>
+    </div>
+  </section>
+
   <footer class="section contact-section" id="contact">
     <div class="wrap">
       <div class="section-head">
@@ -464,16 +511,22 @@
       </div>
       <div class="contact-grid">
         <div class="contact-field"><div class="k">Address</div><div class="v">P.M. Public School, Jattari, District Aligarh, Uttar Pradesh-202137 <em>Infront of Patel Inter College</em></div></div>
+        <div class="contact-field"><div class="k">School Details</div><div class="v">Registration No. 13378<br>Affiliated to U.P. Board · English medium</div></div>
         <div class="contact-field"><div class="k">Phone</div><div class="v"><em>+91 8285503740</em></div></div>
+        <div class="contact-field"><div class="k">WhatsApp Enquiry</div><div class="v"><a href="https://wa.me/918285503740?text=Hello%2C%20I%20would%20like%20to%20enquire%20about%20P.M.%20Public%20School." target="_blank" rel="noopener noreferrer"><em>Chat with us on WhatsApp</em></a></div></div>
         <div class="contact-field"><div class="k">Email</div><div class="v"><em>info@pmpublicschooljattari.in</em></div></div>
         <div class="contact-field"><div class="k">Office Hours</div><div class="v">Monday – Saturday, 7:00 AM – 3:00 PM</div></div>
         <div class="contact-field"><div class="k">Admissions</div><div class="v">Open for Session 2026–27</div></div>
-        <div class="contact-field"><div class="k">Find Us</div><div class="v"><em>Add your Google Maps link</em></div></div>
+        <div class="contact-field"><div class="k">Find Us</div><div class="v"><a href="https://www.google.com/maps/search/?api=1&amp;query=P.M.%20Public%20School%2C%20Jattari%2C%20Aligarh%2C%20Uttar%20Pradesh%20202137" target="_blank" rel="noopener noreferrer"><em>Open P.M. Public School in Google Maps</em></a></div></div>
       </div>
       <div class="footer-bottom">
-        <span>© 2026 PM Public School, Jattari</span>
+        <span>© 2026 P.M. Public School, Jattari</span>
         <span>Nursery – Class VIII</span>
       </div>
     </div>
   </footer>
+  <a class="whatsapp-float" href="https://wa.me/918285503740?text=Hello%2C%20I%20would%20like%20to%20enquire%20about%20P.M.%20Public%20School." target="_blank" rel="noopener noreferrer" aria-label="Send an enquiry to P.M. Public School on WhatsApp">
+    <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16.04 3C9.02 3 3.31 8.69 3.31 15.69c0 2.23.59 4.41 1.7 6.34L3.2 28.8l6.96-1.82a12.8 12.8 0 0 0 5.87 1.42h.01c7.01 0 12.72-5.7 12.72-12.7a12.62 12.62 0 0 0-3.72-8.98A12.65 12.65 0 0 0 16.04 3zm0 23.25h-.01a10.6 10.6 0 0 1-5.4-1.48l-.39-.23-4.13 1.08 1.1-4.02-.25-.41a10.53 10.53 0 0 1-1.62-5.5c0-5.9 4.8-10.69 10.71-10.69 2.86 0 5.55 1.11 7.57 3.14a10.62 10.62 0 0 1 3.13 7.56c0 5.9-4.8 10.7-10.71 10.7zm5.88-8.02c-.32-.16-1.9-.94-2.2-1.05-.3-.1-.51-.16-.73.16-.21.32-.84 1.05-1.03 1.27-.19.21-.38.24-.7.08-.32-.16-1.35-.5-2.57-1.59-.95-.84-1.59-1.89-1.78-2.21-.19-.32-.02-.49.14-.65.15-.14.32-.38.48-.57.16-.19.21-.32.32-.54.1-.21.05-.4-.03-.56-.08-.16-.73-1.75-1-2.4-.27-.63-.54-.55-.73-.56h-.62c-.21 0-.56.08-.86.4-.3.32-1.13 1.1-1.13 2.69s1.16 3.12 1.32 3.34c.16.21 2.28 3.48 5.52 4.88.77.33 1.37.53 1.84.68.77.24 1.47.21 2.02.13.62-.09 1.9-.78 2.17-1.54.27-.75.27-1.4.19-1.53-.08-.14-.3-.22-.62-.38z"/></svg>
+  </a>
 </div>
+
