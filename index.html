@@ -2,25 +2,31 @@
 @import url('https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@400;600;700&family=Mukta:wght@400;500;600;700&family=Caveat:wght@500;600&display=swap');
 
 .site {
-  --paper: #efead9;
-  --paper-white: #fbf9f0;
-  --ink: #1e3550;
-  --ink-soft: #2c3e50;
+  --paper: #17212b;
+  --paper-white: #202d3a;
+  --ink: #f2efe3;
+  --ink-soft: #d5dee8;
   --margin-red: #a83e32;
-  --brass: #a9782e;
+  --brass: #d3ad6c;
   --chalk: #1f3d2e;
   --chalk-text: #f2efe3;
   --line-blue: #8ba0bd;
 
   font-family: 'Mukta', sans-serif;
   color: var(--ink-soft);
-  background: var(--paper);
-  background-image:
-    linear-gradient(var(--line-blue) 1px, transparent 1px);
-  background-size: 100% 34px;
-  background-position: 0 120px;
+  background: var(--paper-white);
   line-height: 1.6;
-  overflow-x: hidden;
+  overflow-x: clip;
+}
+.site[data-theme="day"] {
+  --paper: #efead9;
+  --paper-white: #fbf9f0;
+  --ink: #1e3550;
+  --ink-soft: #2c3e50;
+  --brass: #a9782e;
+}
+.site[data-theme="day"] .hero {
+  background-image: linear-gradient(rgba(239,234,217,0.84), rgba(239,234,217,0.9)), url('images/annual-day-01.jpeg');
 }
 
 .site * { box-sizing: border-box; }
@@ -103,6 +109,12 @@
   font-size: 0.65rem; font-weight: 700;
 }
 .topbar .brandmark .school-logo { width: 42px; height: 42px; object-fit: contain; border-radius: 50%; flex: 0 0 auto; }
+.theme-toggle {
+  flex: 0 0 auto; padding: 7px 11px; border: 1px solid rgba(139,160,189,0.55);
+  border-radius: 6px; background: var(--paper-white); color: var(--ink);
+  white-space: nowrap; font-size: 0.86rem;
+}
+.theme-toggle:hover { border-color: var(--brass); }
 .tabs {
   display: flex; gap: 4px; overflow-x: auto; scrollbar-width: none;
   padding-bottom: 0;
@@ -120,7 +132,12 @@
 .tabs a:hover, .tabs a:focus-visible { transform: translateY(0); color: var(--margin-red); }
 
 /* ---------- HERO ---------- */
-.hero { padding: 56px 0 40px; position: relative; }
+.hero {
+  padding: 56px 0 40px; position: relative;
+  background-image: linear-gradient(rgba(23,33,43,0.78), rgba(23,33,43,0.86)), url('images/annual-day-01.jpeg');
+  background-size: cover;
+  background-position: center 38%;
+}
 .hero .meta-line {
   font-size: 0.82rem; letter-spacing: 0.02em; color: var(--ink-soft);
   border-top: 1px dashed rgba(30,53,80,0.35);
@@ -177,7 +194,7 @@
 }
 .cta-row { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 6px; }
 .btn-primary {
-  background: var(--margin-red); color: var(--paper-white);
+  background: var(--margin-red); color: #fff;
   border: none; padding: 13px 22px; border-radius: 4px;
   font-size: 0.95rem; box-shadow: 3px 3px 0 rgba(30,53,80,0.25);
   transition: transform 0.15s ease, box-shadow 0.15s ease;
@@ -192,6 +209,7 @@
 
 /* ---------- SECTION SHELL ---------- */
 .section { padding: 54px 0; }
+.site section[id], .site footer[id] { scroll-margin-top: 76px; }
 .section-head { margin-bottom: 28px; max-width: 640px; }
 .section-head h2 { font-size: clamp(1.5rem, 3vw, 2.1rem); }
 .section-head .eyebrow { display: block; margin-bottom: 4px; }
@@ -249,11 +267,11 @@
 }
 .register th {
   text-align: left; font-family: 'Zilla Slab', serif; font-weight: 700;
-  background: var(--ink); color: var(--chalk-text);
+  background: #101820; color: var(--chalk-text);
   padding: 12px 14px; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.04em;
 }
 .register td {
-  padding: 14px; border-bottom: 1px solid rgba(30,53,80,0.12);
+  padding: 14px; border-bottom: 1px solid rgba(213,222,232,0.2); color: #f7f8fa;
   vertical-align: top;
 }
 .register tr:last-child td { border-bottom: none; }
@@ -312,7 +330,7 @@
 .big-stamp .l2 { font-size: 0.78rem; margin-top: 6px; letter-spacing: 0.05em; }
 
 /* ---------- CONTACT / FOOTER ---------- */
-.contact-section { background: var(--ink); color: var(--chalk-text); }
+.contact-section { background: #101820; color: #f2efe3; }
 .contact-section .eyebrow { color: #e6b98a; }
 .contact-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; }
 .contact-field { border-top: 1px solid rgba(251,249,240,0.25); padding-top: 12px; }
@@ -343,7 +361,7 @@
 }
 </style>
 
-<div class="site">
+<div class="site" data-theme="night">
   <header class="topbar">
     <div class="wrap">
       <div class="brandmark"><img class="school-logo" src="images/Logo.jpeg" alt=""> P.M. Public School Jattari, Aligarh</div>
@@ -356,6 +374,7 @@
         <a href="#careers">Careers</a>
         <a href="#contact">Contact</a>
       </nav>
+      <button class="theme-toggle" type="button" aria-label="Switch to day mode">☀ Day</button>
     </div>
   </header>
 
@@ -536,5 +555,27 @@
   <a class="whatsapp-float" href="https://wa.me/918285503740?text=Hello%2C%20I%20would%20like%20to%20enquire%20about%20P.M.%20Public%20School." target="_blank" rel="noopener noreferrer" aria-label="Send an enquiry to P.M. Public School on WhatsApp">
     <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16.04 3C9.02 3 3.31 8.69 3.31 15.69c0 2.23.59 4.41 1.7 6.34L3.2 28.8l6.96-1.82a12.8 12.8 0 0 0 5.87 1.42h.01c7.01 0 12.72-5.7 12.72-12.7a12.62 12.62 0 0 0-3.72-8.98A12.65 12.65 0 0 0 16.04 3zm0 23.25h-.01a10.6 10.6 0 0 1-5.4-1.48l-.39-.23-4.13 1.08 1.1-4.02-.25-.41a10.53 10.53 0 0 1-1.62-5.5c0-5.9 4.8-10.69 10.71-10.69 2.86 0 5.55 1.11 7.57 3.14a10.62 10.62 0 0 1 3.13 7.56c0 5.9-4.8 10.7-10.71 10.7zm5.88-8.02c-.32-.16-1.9-.94-2.2-1.05-.3-.1-.51-.16-.73.16-.21.32-.84 1.05-1.03 1.27-.19.21-.38.24-.7.08-.32-.16-1.35-.5-2.57-1.59-.95-.84-1.59-1.89-1.78-2.21-.19-.32-.02-.49.14-.65.15-.14.32-.38.48-.57.16-.19.21-.32.32-.54.1-.21.05-.4-.03-.56-.08-.16-.73-1.75-1-2.4-.27-.63-.54-.55-.73-.56h-.62c-.21 0-.56.08-.86.4-.3.32-1.13 1.1-1.13 2.69s1.16 3.12 1.32 3.34c.16.21 2.28 3.48 5.52 4.88.77.33 1.37.53 1.84.68.77.24 1.47.21 2.02.13.62-.09 1.9-.78 2.17-1.54.27-.75.27-1.4.19-1.53-.08-.14-.3-.22-.62-.38z"/></svg>
   </a>
+  <script>
+    (() => {
+      const site = document.querySelector('.site');
+      const themeToggle = site.querySelector('.theme-toggle');
+      const savedTheme = localStorage.getItem('pm-public-school-theme');
+
+      const setTheme = (theme) => {
+        site.dataset.theme = theme;
+        const nextTheme = theme === 'night' ? 'day' : 'night';
+        themeToggle.textContent = nextTheme === 'day' ? '☀ Day' : '☾ Night';
+        themeToggle.setAttribute('aria-label', `Switch to ${nextTheme} mode`);
+        themeToggle.setAttribute('aria-pressed', String(theme === 'day'));
+      };
+
+      setTheme(savedTheme === 'day' ? 'day' : 'night');
+      themeToggle.addEventListener('click', () => {
+        const nextTheme = site.dataset.theme === 'night' ? 'day' : 'night';
+        localStorage.setItem('pm-public-school-theme', nextTheme);
+        setTheme(nextTheme);
+      });
+    })();
+  </script>
 </div>
 
