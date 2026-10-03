@@ -213,6 +213,25 @@
 .section-head { margin-bottom: 28px; max-width: 640px; }
 .section-head h2 { font-size: clamp(1.5rem, 3vw, 2.1rem); }
 .section-head .eyebrow { display: block; margin-bottom: 4px; }
+.updates-section {
+  padding: 34px 0; border-top: 3px solid var(--brass); border-bottom: 1px solid rgba(139,160,189,0.3);
+  background: linear-gradient(115deg, #263b4e, #1c2b39);
+}
+.updates-section .section-head { margin-bottom: 18px; }
+.updates-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+.update-card {
+  padding: 17px; border: 1px solid rgba(213,222,232,0.22); border-left: 3px solid var(--brass);
+  border-radius: 5px; background: rgba(255,255,255,0.045);
+}
+.update-card .update-label { color: #e4c17e; font-size: 0.76rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; }
+.update-card h3 { margin: 5px 0 6px; font-family: 'Zilla Slab', serif; font-size: 1.12rem; }
+.update-card p { margin: 0; font-size: 0.9rem; }
+.update-card a { display: inline-block; margin-top: 10px; color: #e4c17e; font-weight: 700; }
+.update-card a:hover { text-decoration: underline; }
+.site[data-theme="day"] .updates-section { background: linear-gradient(115deg, #f1e8d4, #fbf9f0); }
+.site[data-theme="day"] .update-card { border-color: rgba(30,53,80,0.2); border-left-color: var(--brass); background: rgba(255,255,255,0.65); }
+.site[data-theme="day"] .update-card .update-label,
+.site[data-theme="day"] .update-card a { color: #79551e; }
 
 /* ---------- ABOUT ---------- */
 .about-grid {
@@ -348,6 +367,7 @@
 /* ---------- RESPONSIVE ---------- */
 @media (max-width: 800px) {
   .about-grid, .admissions-wrap, .contact-grid { grid-template-columns: 1fr; }
+  .updates-grid { grid-template-columns: 1fr; }
   .leadership-grid { grid-template-columns: 1fr; }
   .period-grid { grid-template-columns: repeat(2, 1fr); }
   .gallery-grid { grid-template-columns: repeat(2, 1fr); }
@@ -367,6 +387,7 @@
       <div class="brandmark"><img class="school-logo" src="images/Logo.jpeg" alt=""> P.M. Public School Jattari, Aligarh</div>
       <nav class="tabs">
         <a href="#about">About</a>
+        <a href="#updates">Updates</a>
         <a href="#why">Why Us</a>
         <a href="#academics">Academics</a>
         <a href="#gallery">Gallery</a>
@@ -395,6 +416,35 @@
           <a class="btn-secondary" href="#contact">Visit Our Campus</a>
           <a class="btn-secondary" href="https://wa.me/918285503740?text=Hello%2C%20I%20would%20like%20to%20enquire%20about%20P.M.%20Public%20School." target="_blank" rel="noopener noreferrer">WhatsApp Enquiry</a>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section updates-section" id="updates">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">From the school</span>
+        <h2>Latest Updates</h2>
+      </div>
+      <div class="updates-grid">
+        <article class="update-card">
+          <div class="update-label">Admissions · Session 2026–27</div>
+          <h3>Admissions enquiries are open</h3>
+          <p>Contact the school office to ask about joining P.M. Public School.</p>
+          <a href="#admissions">View the admission process →</a>
+        </article>
+        <article class="update-card">
+          <div class="update-label">Parent–Teacher Meeting</div>
+          <h3>PTM moments from campus</h3>
+          <p>See highlights from parents and teachers meeting to support each child’s learning.</p>
+          <a href="#ptm-gallery">View PTM photos →</a>
+        </article>
+        <article class="update-card">
+          <div class="update-label">School information</div>
+          <h3>English medium · U.P. Board</h3>
+          <p>Registration No. 13378 · Nursery to Class VIII · Jattari, Aligarh.</p>
+          <a href="#contact">Contact the school →</a>
+        </article>
       </div>
     </div>
   </section>
@@ -489,6 +539,38 @@
         <figure class="gallery-photo"><img src="images/annual-day-06.jpeg" alt="Student speaking on stage with a teacher" loading="lazy"><figcaption>Annual Day Performance</figcaption></figure>
       </div>
       <div class="gallery-note">More moments from our Annual Day and Independence Day celebrations.</div>
+    </div>
+  </section>
+
+  <section class="section gallery-section" id="ptm-gallery">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Parents and teachers together</span>
+        <h2>Parent–Teacher Meeting</h2>
+      </div>
+      <div class="gallery-grid photo-grid">
+        <figure class="gallery-photo"><img src="images/PTM1.jpeg" alt="Parents and teachers meeting at P.M. Public School" loading="lazy"><figcaption>Parent–Teacher Meeting</figcaption></figure>
+        <figure class="gallery-photo"><img src="images/PTM2.jpeg" alt="Parents and teachers meeting at P.M. Public School" loading="lazy"><figcaption>Parent–Teacher Meeting</figcaption></figure>
+        <figure class="gallery-photo"><img src="images/PTM3.jpeg" alt="Parents and teachers meeting at P.M. Public School" loading="lazy"><figcaption>Parent–Teacher Meeting</figcaption></figure>
+        <figure class="gallery-photo"><img src="images/PTM4.jpeg" alt="Parents and teachers meeting at P.M. Public School" loading="lazy"><figcaption>Parent–Teacher Meeting</figcaption></figure>
+        <figure class="gallery-photo"><img src="images/PTM5.jpeg" alt="Parents and teachers meeting at P.M. Public School" loading="lazy"><figcaption>Parent–Teacher Meeting</figcaption></figure>
+        <figure class="gallery-photo"><img src="images/PTM6.jpeg" alt="Parents and teachers meeting at P.M. Public School" loading="lazy"><figcaption>Parent–Teacher Meeting</figcaption></figure>
+        <figure class="gallery-photo"><img src="images/PTM7.jpeg" alt="Parents and teachers meeting at P.M. Public School" loading="lazy"><figcaption>Parent–Teacher Meeting</figcaption></figure>
+        <figure class="gallery-photo"><img src="images/PTM8.jpeg" alt="Parents and teachers meeting at P.M. Public School" loading="lazy"><figcaption>Parent–Teacher Meeting</figcaption></figure>
+        <figure class="gallery-photo"><img src="images/PTM9.jpeg" alt="Parents and teachers meeting at P.M. Public School" loading="lazy"><figcaption>Parent–Teacher Meeting</figcaption></figure>
+        <figure class="gallery-photo"><img src="images/PTM10.jpeg" alt="Parents and teachers meeting at P.M. Public School" loading="lazy"><figcaption>Parent–Teacher Meeting</figcaption></figure>
+        <figure class="gallery-photo"><img src="images/PTM11.jpeg" alt="Parents and teachers meeting at P.M. Public School" loading="lazy"><figcaption>Parent–Teacher Meeting</figcaption></figure>
+        <figure class="gallery-photo"><img src="images/PTM12.jpeg" alt="Parents and teachers meeting at P.M. Public School" loading="lazy"><figcaption>Parent–Teacher Meeting</figcaption></figure>
+        <figure class="gallery-photo"><img src="images/PTM13.jpeg" alt="Parents and teachers meeting at P.M. Public School" loading="lazy"><figcaption>Parent–Teacher Meeting</figcaption></figure>
+        <figure class="gallery-photo"><img src="images/PTM14.jpeg" alt="Parents and teachers meeting at P.M. Public School" loading="lazy"><figcaption>Parent–Teacher Meeting</figcaption></figure>
+        <figure class="gallery-photo"><img src="images/PTM15.jpeg" alt="Parents and teachers meeting at P.M. Public School" loading="lazy"><figcaption>Parent–Teacher Meeting</figcaption></figure>
+        <figure class="gallery-photo"><img src="images/PTM16.jpeg" alt="Parents and teachers meeting at P.M. Public School" loading="lazy"><figcaption>Parent–Teacher Meeting</figcaption></figure>
+        <figure class="gallery-photo"><img src="images/PTM17.jpeg" alt="Parents and teachers meeting at P.M. Public School" loading="lazy"><figcaption>Parent–Teacher Meeting</figcaption></figure>
+        <figure class="gallery-photo"><img src="images/PTM18.jpeg" alt="Parents and teachers meeting at P.M. Public School" loading="lazy"><figcaption>Parent–Teacher Meeting</figcaption></figure>
+        <figure class="gallery-photo"><img src="images/PTM19.jpeg" alt="Parents and teachers meeting at P.M. Public School" loading="lazy"><figcaption>Parent–Teacher Meeting</figcaption></figure>
+        <figure class="gallery-photo"><img src="images/PTM20.jpeg" alt="Parents and teachers meeting at P.M. Public School" loading="lazy"><figcaption>Parent–Teacher Meeting</figcaption></figure>
+        <figure class="gallery-photo"><img src="images/PTM21.jpeg" alt="Parents and teachers meeting at P.M. Public School" loading="lazy"><figcaption>Parent–Teacher Meeting</figcaption></figure>
+      </div>
     </div>
   </section>
 
